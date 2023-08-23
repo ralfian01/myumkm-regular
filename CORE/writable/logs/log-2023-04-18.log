@@ -1,0 +1,62 @@
+CRITICAL - 2023-04-18 10:31:37 --> file_get_contents(D:\Projects\KPS\PHP\Putsutech\writable\uploads/): failed to open stream: No such file or directory
+in APPPATH\Controllers\CDN\Files.php on line 48.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(D:\\Projects\\KPS\\PHP\\Putsutech\\writable\\uploads/): failed to open stream: No such file or directory', 'APPPATH\\Controllers\\CDN\\Files.php', 48, [...])
+ 2 APPPATH\Controllers\CDN\Files.php(48): file_get_contents('ROOTPATH\\writable\\uploads')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\CDN\Files->index('ROOTPATH\\public', 'ROOTPATH\\public')
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CDN\Files))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-18 10:32:05 --> file_get_contents(D:\Projects\KPS\PHP\Putsutech\writable\uploads/): failed to open stream: No such file or directory
+in APPPATH\Controllers\CDN\Files.php on line 48.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(D:\\Projects\\KPS\\PHP\\Putsutech\\writable\\uploads/): failed to open stream: No such file or directory', 'APPPATH\\Controllers\\CDN\\Files.php', 48, [...])
+ 2 APPPATH\Controllers\CDN\Files.php(48): file_get_contents('ROOTPATH\\writable\\uploads')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\CDN\Files->index('ROOTPATH\\public', 'ROOTPATH\\public')
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CDN\Files))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-18 10:37:17 --> Call to undefined function App\Controllers\str_contains()
+in APPPATH\Controllers\Error.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Error->error400()
+ 2 SYSTEMPATH\CodeIgniter.php(963): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Error))
+ 3 SYSTEMPATH\CodeIgniter.php(387): CodeIgniter\CodeIgniter->display404errors(Object(CodeIgniter\Exceptions\PageNotFoundException))
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-18 10:37:35 --> Call to undefined function App\Controllers\str_contains()
+in APPPATH\Controllers\Error.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Error->error400()
+ 2 SYSTEMPATH\CodeIgniter.php(963): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Error))
+ 3 SYSTEMPATH\CodeIgniter.php(387): CodeIgniter\CodeIgniter->display404errors(Object(CodeIgniter\Exceptions\PageNotFoundException))
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-18 10:37:49 --> Object of class CodeIgniter\HTTP\Header could not be converted to int
+in APPPATH\Controllers\Error.php on line 14.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\HTTP\\Header could not be converted to int', 'APPPATH\\Controllers\\Error.php', 14, [...])
+ 2 APPPATH\Controllers\Error.php(14): strpos('text/html', Object(CodeIgniter\HTTP\Header))
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Error->error400()
+ 4 SYSTEMPATH\CodeIgniter.php(963): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Error))
+ 5 SYSTEMPATH\CodeIgniter.php(387): CodeIgniter\CodeIgniter->display404errors(Object(CodeIgniter\Exceptions\PageNotFoundException))
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-18 10:40:40 --> Object of class CodeIgniter\HTTP\Header could not be converted to int
+in APPPATH\Controllers\Error.php on line 14.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\HTTP\\Header could not be converted to int', 'APPPATH\\Controllers\\Error.php', 14, [...])
+ 2 APPPATH\Controllers\Error.php(14): strpos('text/html', Object(CodeIgniter\HTTP\Header))
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Error->error400()
+ 4 SYSTEMPATH\CodeIgniter.php(963): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Error))
+ 5 SYSTEMPATH\CodeIgniter.php(387): CodeIgniter\CodeIgniter->display404errors(Object(CodeIgniter\Exceptions\PageNotFoundException))
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-04-18 10:42:26 --> Undefined variable: title
+in APPPATH\Views\overrideErrors\404.php on line 7.
+ 1 APPPATH\Views\overrideErrors\404.php(7): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: title', 'APPPATH\\Views\\overrideErrors\\404.php', 7, [])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\overrideErrors\\404.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('overrideErrors/404', [], true)
+ 5 APPPATH\Controllers\Error.php(16): view('overrideErrors/404')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Error->error400()
+ 7 SYSTEMPATH\CodeIgniter.php(963): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Error))
+ 8 SYSTEMPATH\CodeIgniter.php(387): CodeIgniter\CodeIgniter->display404errors(Object(CodeIgniter\Exceptions\PageNotFoundException))
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
