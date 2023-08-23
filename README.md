@@ -6,3 +6,4 @@ This repository holds common files used for regular myumkm.com website projects
 2. Open a terminal and navigate to the repository directory you just cloned
 3. Run the following command to install dependencies:
    - Make sure Composer is installed on your computer
+   - 123
