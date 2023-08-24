@@ -12,17 +12,20 @@
                     Produk
                 </div>
 
-                <div class="group_item_container gr_item_hv2">
+                <?php if (isset($catalog_category['product'])) : ?>
+                    <div class="group_item_container gr_item_hv2">
 
-                    <?php foreach ($catalog_category['product']['list'] as $lsKey => $lsVal) : ?>
+                        <?php foreach ($catalog_category['product']['list'] as $lsKey => $lsVal) : ?>
 
-                        <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
-                            <?= $lsVal['category_name']; ?>
-                        </a>
+                            <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
+                                <?= $lsVal['category_name']; ?>
+                            </a>
 
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
 
-                </div>
+                    </div>
+                <?php endif; ?>
+
             </div>
 
             <div class="nav_item_group">
@@ -30,17 +33,19 @@
                     Layanan
                 </div>
 
-                <div class="group_item_container gr_item_hv2">
+                <?php if (isset($catalog_category['service'])) : ?>
+                    <div class="group_item_container gr_item_hv2">
 
-                    <?php foreach ($catalog_category['service']['list'] as $lsKey => $lsVal) : ?>
+                        <?php foreach ($catalog_category['service']['list'] as $lsKey => $lsVal) : ?>
 
-                        <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
-                            <?= $lsVal['category_name']; ?>
-                        </a>
+                            <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
+                                <?= $lsVal['category_name']; ?>
+                            </a>
 
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
 
-                </div>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <a href="<?= base_url('blog'); ?>" class="nav_item">
@@ -64,17 +69,19 @@
                 Produk
             </div>
 
-            <div class="group_item_container gr_item_hv2">
+            <?php if (isset($catalog_category['product'])) : ?>
+                <div class="group_item_container gr_item_hv2">
 
-                <?php foreach ($catalog_category['product']['list'] as $lsKey => $lsVal) : ?>
+                    <?php foreach ($catalog_category['product']['list'] as $lsKey => $lsVal) : ?>
 
-                    <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
-                        <?= $lsVal['category_name']; ?>
-                    </a>
+                        <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
+                            <?= $lsVal['category_name']; ?>
+                        </a>
 
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
 
-            </div>
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="nav_item_group">
@@ -82,17 +89,19 @@
                 Layanan
             </div>
 
-            <div class="group_item_container gr_item_hv2">
+            <?php if (isset($catalog_category['service'])) : ?>
+                <div class="group_item_container gr_item_hv2">
 
-                <?php foreach ($catalog_category['service']['list'] as $lsKey => $lsVal) : ?>
+                    <?php foreach ($catalog_category['service']['list'] as $lsKey => $lsVal) : ?>
 
-                    <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
-                        <?= $lsVal['category_name']; ?>
-                    </a>
+                        <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
+                            <?= $lsVal['category_name']; ?>
+                        </a>
 
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
 
-            </div>
+                </div>
+            <?php endif; ?>
         </div>
 
         <a href="<?= base_url('blog'); ?>" class="nav_item">

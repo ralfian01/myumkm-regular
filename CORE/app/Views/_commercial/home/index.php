@@ -46,9 +46,13 @@
                         Produk
                     </div>
 
-                    <div class="group_item_container">
-                        <?= $this->renderSection('nav/product_list'); ?>
-                    </div>
+                    <?php if (isset($catalog_category['product'])) : ?>
+
+                        <div class="group_item_container">
+                            <?= $this->renderSection('nav/product_list'); ?>
+                        </div>
+
+                    <?php endif; ?>
                 </div>
 
                 <div class="nav_item_group">
@@ -56,9 +60,13 @@
                         Layanan
                     </div>
 
-                    <div class="group_item_container">
-                        <?= $this->renderSection('nav/service_list'); ?>
-                    </div>
+                    <?php if (isset($catalog_category['service'])) : ?>
+
+                        <div class="group_item_container">
+                            <?= $this->renderSection('nav/service_list'); ?>
+                        </div>
+
+                    <?php endif; ?>
                 </div>
 
                 <a href="<?= base_url(); ?>" class="nav_item py1c5 tx_lh0 mb_py0c5 tb_py0c5 mb_hide tb_hide">
@@ -88,9 +96,13 @@
                     Produk
                 </div>
 
-                <div class="group_item_container">
-                    <?= $this->renderSection('nav/product_list'); ?>
-                </div>
+                <?php if (isset($catalog_category['product'])) : ?>
+
+                    <div class="group_item_container">
+                        <?= $this->renderSection('nav/product_list'); ?>
+                    </div>
+
+                <?php endif; ?>
             </div>
 
             <div class="nav_item_group">
@@ -98,9 +110,13 @@
                     Layanan
                 </div>
 
-                <div class="group_item_container">
-                    <?= $this->renderSection('nav/service_list'); ?>
-                </div>
+                <?php if (isset($catalog_category['service'])) : ?>
+
+                    <div class="group_item_container">
+                        <?= $this->renderSection('nav/service_list'); ?>
+                    </div>
+
+                <?php endif; ?>
             </div>
 
             <a href="<?= base_url('blog'); ?>" class="nav_item">
