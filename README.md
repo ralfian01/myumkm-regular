@@ -1,17 +1,32 @@
-# myumkm-regular
+<h1>MyUMKM Regular Website</h1>
 This repository holds common files used for regular myumkm.com website projects
 
-# Requirement
-1. Composer
-2. PHP 8.0+
-3. CodeIgniter 4 Framework
-4. MySQL DBMS
+<h2>Requirement</h2>
+1. Composer </br>
+2. PHP 8.0+ </br>
+3. CodeIgniter 4 Framework </br>
+4. MySQL DBMS </br>
 
-# Installation
-1. Clone this repository to your computer
-2. Import the MySQL file located in the ".install" folder to your computer's local database
-3. Open a terminal and navigate to the directory "CORE"
-4. Run the command "composer update" to install dependencies
-5. Open the file on "CORE/app/Config/Paths.php" and set the system path on line 26. Navigate to the correct "vendor" folder location
-6. Open a terminal and navigate to the ".local" folder, then run the command "php spark serve" to run the application on your local system
-    - You can also use the "php spark start" command to use the default port set in the ".env" file
+<h2>Installation</h2>
+1. Clone this repository to your computer </br>
+2. Import the MySQL file located in the ".install" folder to your computer's local database </br>
+3. Open a terminal and navigate to the "CORE" directory </br>
+4. Run the command below to install dependencies
+<blockquote>
+    composer update
+</blockquote>
+
+<h2>Run Program</h2>
+Open a terminal and navigate to the ".local" folder, 
+<blockquote>
+    cd CORE/.local
+</blockquote>
+Then run the command below to run the application on your local system </br>
+<b>Run the program with default port (8080)</b>
+<blockquote>
+    php spark serve
+</blockquote>
+<b>Run the program using the port set in the .env file</b>
+<blockquote>
+    php spark start
+</blockquote>
