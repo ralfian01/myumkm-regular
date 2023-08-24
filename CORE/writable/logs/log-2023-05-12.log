@@ -1,9 +1,0 @@
-CRITICAL - 2023-05-12 05:30:02 --> file_get_contents(D:\Projects\KPS\PHP\MyUMKM\Sub\DapurFirdaus\writable\uploads/image): failed to open stream: Permission denied
-in APPPATH\Controllers\CDN\Files.php on line 50.
- 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(D:\\Projects\\KPS\\PHP\\MyUMKM\\Sub\\DapurFirdaus\\writable\\uploads/image): failed to open stream: Permission denied', 'APPPATH\\Controllers\\CDN\\Files.php', 50, [...])
- 2 APPPATH\Controllers\CDN\Files.php(50): file_get_contents('ROOTPATH\\writable\\uploads\\image')
- 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\CDN\Files->index('image')
- 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CDN\Files))
- 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
- 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
