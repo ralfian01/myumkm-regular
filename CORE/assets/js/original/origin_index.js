@@ -1,5 +1,5 @@
-var baseUrl = 'http://localhost:6060/';
-// var baseUrl = 'http://projectkps.my.id/';
+var baseUrl = 'http://localhost:6059/';
+// var baseUrl = 'https://subdomain.myumkm.com/';
 
 // Constanta
 $.const = {};
