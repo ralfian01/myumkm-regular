@@ -276,8 +276,6 @@
                 .collect(
                     (json) => {
 
-                        console.log('worked');
-
                         let url = $.makeURL.api().addPath('catalog/product/category/' + json['id']).href,
                             formData = jsonToFormData(json),
                             token = jsCookie.get('_PTS-Auth:Token');
