@@ -338,6 +338,8 @@
                     .collect(
                         (json) => {
 
+                            json['price'] = json['price'].replaceAll(/[^0-9]/g, '');
+
                             let url = $.makeURL.api().addPath('catalog/product').href,
                                 formData = jsonToFormData(json),
                                 token = jsCookie.get('_PTS-Auth:Token');
