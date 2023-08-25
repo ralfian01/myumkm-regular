@@ -54,6 +54,8 @@ class ListMod extends AdminController
 
         $data['catalog_category'] = $this->catalogCategory(1);
 
+        if ($data['catalog_category'] == null) return $this->viewPage('control/catalog/product/lists/error/index', $data);
+
         return $this->viewPage('control/catalog/product/lists/new/index', $data);
     }
 
@@ -64,6 +66,8 @@ class ListMod extends AdminController
         $data = [];
         $data['catalog_data'] = $this->catalogData(1, $id);
         $data['catalog_category'] = $this->catalogCategory(1);
+
+        if ($data['catalog_category'] == null) return $this->viewPage('control/catalog/product/lists/error/index', $data);
 
         if ($data['catalog_data'] == null) return $this->error404();
 
