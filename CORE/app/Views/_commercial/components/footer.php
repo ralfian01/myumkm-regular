@@ -40,26 +40,54 @@
                 Ikuti kami
             </div>
 
-            <div class="flex y_center x_center mt1c5">
-                <?php
-                $icon = [
-                    'facebook' => 'ri-facebook-circle-fill',
-                    'instagram' => 'ri-instagram-line',
-                    'twitter' => '',
-                    'tiktok' => ''
-                ];
-                ?>
+            <div class="tx_w_bolder mt1c5">
+                Sosial media
+            </div>
+
+            <div class="flex y_center x_center mt1">
+
                 <?php if (isset($social_media)) : ?>
                     <?php foreach ($social_media as $key => $val) : ?>
-                        <?php if (!in_array($val, [null, ''])) : ?>
+                        <?php if (!in_array($val['username'], [null, ''])) : ?>
 
-                            <a href="<?= $val; ?>" class="button1 tx_bg1c5" style="--bt_bg: transparent; --bt_border_color: transparent; --bt_color: rgb(50, 50, 50);">
-                                <i class="<?= $icon[$key]; ?> tx_w_regular"></i>
+                            <a href="<?= "{$val['url']}{$val['username']}"; ?>" class="button1 p1 tx_bg1c5" style="--bt_bg: transparent; --bt_border_color: transparent; --bt_color: rgb(50, 50, 50);">
+
+                                <?php if (isset($val['img']) && !empty($val['img'])) : ?>
+                                    <img src="<?= cdnURL($val['img']); ?>" alt="" style="width: 21px; height: 21px; fit-content: contain;">
+                                <?php else : ?>
+                                    <i class="<?= $val['icon']; ?> tx_w_regular"></i>
+                                <?php endif; ?>
                             </a>
 
                         <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
+
+            </div>
+
+            <div class="tx_w_bolder mt1c5">
+                Marketplace
+            </div>
+
+            <div class="flex y_center x_center mt1">
+
+                <?php if (isset($marketplace)) : ?>
+                    <?php foreach ($marketplace as $key => $val) : ?>
+                        <?php if (!in_array($val['username'], [null, ''])) : ?>
+
+                            <a href="<?= "{$val['url']}{$val['username']}"; ?>" class="button1 p1 tx_bg1c5" style="--bt_bg: transparent; --bt_border_color: transparent; --bt_color: rgb(50, 50, 50);">
+
+                                <?php if (isset($val['img']) && !empty($val['img'])) : ?>
+                                    <img src="<?= cdnURL($val['img']); ?>" alt="" style="width: 21px; height: 21px; fit-content: contain;">
+                                <?php else : ?>
+                                    <i class="<?= $val['icon']; ?> tx_w_regular"></i>
+                                <?php endif; ?>
+                            </a>
+
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
             </div>
         </div>
     </div>

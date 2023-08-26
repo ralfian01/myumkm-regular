@@ -3,14 +3,11 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-use phpDocumentor\Reflection\Types\This;
-use PHPUnit\TextUI\XmlConfiguration\Variable;
-use stdClass;
 
 class AppManifest extends Model
 {
 
-    protected $table            = 'app_manifest';
+    protected $table            = 'myu_app_manifest';
     protected $primaryKey       = 'manifest_code';
 
     protected $returnType       = 'array';
@@ -18,6 +15,62 @@ class AppManifest extends Model
     protected $useAutoIncrement = false;
     protected $skipValidation   = true;
     protected $useTimestamps    = false;
+
+    // Function to get payment method
+    public function paymentMethodOption($method = null)
+    {
+
+        $result = $this
+            ->select("
+                myu_app_manifest.manifest_value
+            ")
+            ->where("myu_app_manifest.manifest_code", "PAYMENT_METHOD");
+
+        $result = $this->find();
+
+        if ($result == null) return null;
+
+        $result = json_decode($result[0]['manifest_value'], true);
+
+        // Parse the column that has JSON value
+        foreach ($result as $key => $val) {
+
+            $val['method'] = $key;
+
+            $result[$key] = $val;
+        }
+
+        if (isset($method) && !empty($method)) $result = $result[$method];
+
+        return $result;
+    }
+
+    // Functino to get owner contact info
+    public function ownerContact($method = null)
+    {
+
+        $result = $this
+            ->select("
+                myu_app_manifest.manifest_value
+            ")
+            ->where("myu_app_manifest.manifest_code", "OWNER_CONTACT");
+
+        $result = $this->find();
+
+        if ($result == null) return null;
+
+        $result = json_decode($result[0]['manifest_value'], true);
+
+        // Parse the column that has JSON value
+        foreach ($result as $key => $val) {
+
+            $result[$key] = $val;
+        }
+
+        if (isset($method) && !empty($method)) $result = $result[$method];
+
+        return $result;
+    }
 
     public function uploadSetting()
     {

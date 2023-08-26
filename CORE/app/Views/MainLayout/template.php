@@ -29,7 +29,7 @@
     <link rel="image_src" href="<?= var_isset($meta['img_url'], '') ?>" />
     <link rel="shortcut icon" href="<?= var_isset($meta['site_icon'], cdnURL('logo/original/putsutech_simplied_v1.svg')); ?>" type="image/x-icon">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" as="style" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style" type="text/css">
 
     <link rel="stylesheet" href="<?= cdnURL('css/original/origin_style.css'); ?>" as="style" type="text/css">
     <link rel="stylesheet" href="<?= cdnURL('css/original/self_icon.css'); ?>" as="style" type="text/css">

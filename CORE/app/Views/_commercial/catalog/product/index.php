@@ -30,41 +30,43 @@
         </div>
     </div>
 
-    <?php foreach ($catalog_category['product']['list'] as $lsKey => $lsVal) : ?>
+    <?php if (isset($catalog_category['product'])) : ?>
+        <?php foreach ($catalog_category['product']['list'] as $lsKey => $lsVal) : ?>
 
-        <?php if ($lsKey % 2 == 0) : ?>
-            <div class="flex y_stretch x_start flex_gap1 mb_flex_gap0 mb_block">
+            <?php if ($lsKey % 2 == 0) : ?>
+                <div class="flex y_stretch x_start flex_gap1 mb_flex_gap0 mb_block">
+                <?php endif; ?>
+
+                <div class="card2 wd50pc mb_wd100pc mb1">
+                    <div class="card_img">
+                        <div class="image">
+                            <img src="<?= cdnURL('image/' . $lsVal['image_path']); ?>">
+                        </div>
+                    </div>
+
+                    <div class="card_info">
+                        <div class="tx_fam_montserrat tx_w_bolder dk_tx_bg1c5 tx_overflow_mt2">
+                            <?= $lsVal['category_name']; ?>
+                        </div>
+
+                        <div class="dk_tx_bg0c5 tx_overflow_mt4 mb_tx_overflow_mt3 mt2 tb_mt1 mb_mt1">
+                            <?= $lsVal['description']; ?>
+                        </div>
+
+                        <div class="mt1c5 wd100pc">
+                            <a href="<?= base_url($lsVal['slug']); ?>" class="button1 bt_small mb_mb0c5 wd_fit">
+                                Lihat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <?php if (($lsKey != 0 && $lsKey % 2 == 1) || $lsKey == count($catalog_category['product']['list']) - 1) : ?>
+                </div>
             <?php endif; ?>
 
-            <div class="card2 wd50pc mb_wd100pc mb1">
-                <div class="card_img">
-                    <div class="image">
-                        <img src="<?= cdnURL('image/' . $lsVal['image_path']); ?>">
-                    </div>
-                </div>
-
-                <div class="card_info">
-                    <div class="tx_fam_montserrat tx_w_bolder dk_tx_bg1c5 tx_overflow_mt2">
-                        <?= $lsVal['category_name']; ?>
-                    </div>
-
-                    <div class="dk_tx_bg0c5 tx_overflow_mt4 mb_tx_overflow_mt3 mt2 tb_mt1 mb_mt1">
-                        <?= $lsVal['description']; ?>
-                    </div>
-
-                    <div class="mt1c5 wd100pc">
-                        <a href="<?= base_url($lsVal['slug']); ?>" class="button1 bt_small mb_mb0c5 wd_fit">
-                            Lihat
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <?php if (($lsKey != 0 && $lsKey % 2 == 1) || $lsKey == count($catalog_category['product']['list']) - 1) : ?>
-            </div>
-        <?php endif; ?>
-
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
 
 </div>
 

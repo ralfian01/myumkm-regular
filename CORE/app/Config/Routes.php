@@ -88,7 +88,19 @@ function fcAdmin($routes)
     // Logout
     $routes->get('logout', [Admin\Auth\Logout::class, 'index']);
 
+
     ### Control page
+
+    #### Information
+    // Contact
+    $routes->get('contact/profile', [Admin\Control\Contact\Profile::class, 'index']);
+    $routes->get('contact/social_media', [Admin\Control\Contact\SocialMedia::class, 'index']);
+    $routes->get('contact/marketplace', [Admin\Control\Contact\Marketplace::class, 'index']);
+
+    // Payment method
+    $routes->get('payment_method', [Admin\Control\PaymentMethod\PaymentMethodList::class, 'index']);
+    $routes->get('payment_method/edit/(:segment)', [Admin\Control\PaymentMethod\PaymentMethodMod::class, 'edit/$1']);
+    $routes->get('payment_method/new', [Admin\Control\PaymentMethod\PaymentMethodMod::class, 'new']);
 
     // Dashboard page
     $routes->get('/', [Admin\Control\Dashboard::class, 'index']);
@@ -184,7 +196,7 @@ function fcApi($routes)
         });
 
         #### Catalog of Services
-        $routes->group('service', ['filter' => 'auth/bearer'], function ($routes) {
+        $routes->group('service', function ($routes) {
 
             #### Category
             // Get
@@ -200,6 +212,28 @@ function fcApi($routes)
             $routes->delete('category/(:segment)', [APIV1\Catalog\Service\Category\Delete::class, 'index/$1']);
         });
     });
+
+
+    #### Contact
+    $routes->put('contact/web_profile', [APIV1\Contact\WebProfile::class, 'index'], ['filter' => 'auth/bearer']);
+    $routes->put('contact/social_media', [APIV1\Contact\SocialMedia::class, 'index'], ['filter' => 'auth/bearer']);
+    $routes->put('contact/marketplace', [APIV1\Contact\Marketplace::class, 'index'], ['filter' => 'auth/bearer']);
+
+    ### Payment method
+    // Get
+    $routes->get('payment_method', [APIV1\PaymentMethod\Get::class, 'index'], ['filter' => 'auth/bearer']);
+    $routes->get('payment_method/(:segment)', [APIV1\PaymentMethod\Get::class, 'index/$1'], ['filter' => 'auth/bearer']);
+
+    // Insert
+    $routes->post('payment_method', [APIV1\PaymentMethod\Insert::class, 'index'], ['filter' => 'auth/bearer']);
+
+    // Update
+    $routes->put('payment_method', [APIV1\PaymentMethod\Update::class, 'index'], ['filter' => 'auth/bearer']);
+    $routes->put('payment_method/(:segment)', [APIV1\PaymentMethod\Update::class, 'index/$1'], ['filter' => 'auth/bearer']);
+
+    // Delete
+    $routes->delete('payment_method', [APIV1\PaymentMethod\Delete::class, 'index'], ['filter' => 'auth/bearer']);
+    $routes->delete('payment_method/(:segment)', [APIV1\PaymentMethod\Delete::class, 'index/$1'], ['filter' => 'auth/bearer']);
 
 
     ### Security
