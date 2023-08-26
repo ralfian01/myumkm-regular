@@ -3,7 +3,7 @@
 <!-- Pre-process - Start -->
 
 <?= $this->section('nav/product_list'); ?>
-<?php if (isset($catalog_category)) : ?>
+<?php if (isset($catalog_category['product'])) : ?>
     <?php foreach ($catalog_category['product']['list'] as $lsKey => $lsVal) : ?>
 
         <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">
@@ -15,7 +15,7 @@
 <?= $this->endSection('nav/product_list'); ?>
 
 <?= $this->section('nav/service_list'); ?>
-<?php if (isset($catalog_category)) : ?>
+<?php if (isset($catalog_category['service'])) : ?>
     <?php foreach ($catalog_category['service']['list'] as $lsKey => $lsVal) : ?>
 
         <a href="<?= base_url($lsVal['slug']); ?>" class="group_item">

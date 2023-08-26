@@ -7,27 +7,52 @@ use App\Controllers\Admin\AdminController;
 class ResetPass extends AdminController
 {
 
+    private $unauthorizedScheme;
+
     public function __construct()
     {
-        // 
+
+        /*** Command line below to use default unauthorized scheme in parent class - from this */
+        $this->unauthorizedScheme = function ($cbPar = []) {
+
+            if (method_exists($this, '__unauthorizedScheme'))
+                return $this->__unauthorizedScheme($cbPar);
+        };
+        /*** Command line above to use default unauthorized scheme in parent class - to this */
+
+        return Parent::__construct([
+            'unauthorizedScheme' => $this->unauthorizedScheme
+        ]);
     }
 
-    // Server Response
-    public function index()
-    {
-
-        return $this->login();
-    }
-
-    // Function to process admin login
-    private function login()
+    // Function to override default unauthorized scheme in parent class
+    private function __unauthorizedScheme($cbPar = [])
     {
 
         return $this->tryCatch(
-            function ($cbParam) {
+            function ($cbPar) {
 
-                return $this->viewPage('auth/reset_pass');
-            }
+                $this->prepare();
+                return $this->view($cbPar['path']);
+            },
+            $cbPar
+        );
+    }
+
+    // Index method
+    public function index()
+    {
+
+        return $this->authHandler(
+            function ($cbPar = []) {
+
+                return redirect()->to($cbPar['redirect_url']);
+            },
+            $this->unauthorizedScheme,
+            [
+                'path' => 'auth/reset_pass',
+                'redirect_url' => $_GET['continue'] ?? adminURL('')
+            ]
         );
     }
 }

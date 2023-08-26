@@ -4,6 +4,8 @@ namespace App\Controllers\Commercial\Catalog;
 
 use App\Controllers\Commercial\CommercialController;
 use App\Models\Catalog\CatalogCategory;
+use App\Models\PaymentMethod;
+use App\Models\AppManifest;
 
 class Service extends CommercialController
 {
@@ -74,7 +76,9 @@ class Service extends CommercialController
                     ])
                     ->prepAddon([
                         'catalog_slug' => 'product/' . $cbPar['id'] . '/',
-                        'catalog_category_data' => $catCategoryData
+                        'catalog_category_data' => $catCategoryData,
+                        'payment_method' => $this->paymentMethodList(1),
+                        'payment_method_opt' => (new AppManifest())->paymentMethodOption(),
                     ]);
 
                 return $this->viewPage('catalog/service/category_detail');
@@ -106,5 +110,26 @@ class Service extends CommercialController
                 return null;
                 break;
         }
+    }
+
+    // Function to get product category from db
+    private function paymentMethodList(
+        $code = ''
+    ) {
+
+        $dbPyMethodList = new PaymentMethod();
+
+        $result = null;
+
+        switch ($code) {
+
+            case 1:
+            default:
+
+                $result = $dbPyMethodList->all();
+                break;
+        }
+
+        return $result;
     }
 }

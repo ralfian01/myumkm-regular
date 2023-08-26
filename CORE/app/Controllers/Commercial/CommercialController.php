@@ -4,6 +4,7 @@ namespace App\Controllers\Commercial;
 
 use App\Controllers\ControllerPreProcessor;
 use App\Models\Catalog\CatalogCategory;
+use App\Models\AppManifest;
 
 class CommercialController extends ControllerPreProcessor
 {
@@ -62,26 +63,17 @@ class CommercialController extends ControllerPreProcessor
         $addonData = []
     ) {
 
+        $ownerContact = (new AppManifest())->ownerContact();
+
         $addonData = [
-            'phone_number' => '6289652330969',
-            'wa_number' => '6289652330969',
-            'email' => 'astutisuprih77@gmail.com',
-            'address' => 'Jl. Jatipadang Raya, Gg. Yusuf Rt.006/Rw.009 No.101, \r\nKel. Jatipadang, Kec. Pasar Minggu, \r\nJakarta Selatan 12540',
-            'social_media' => [
-                'facebook' => 'https://www.facebook.com/profile.php?id=100085662048429&mibextid=ZbWKwL',
-                'instagram' => 'https://instagram.com/dapurfirdaus10?igshid=ZDdkNTZiNTM=',
-                'twitter' => '',
-                'tiktok' => ''
-            ],
-            'payment_method' => [
-                [
-                    'method' => 'BRI',
-                    'name' => 'Suprih Astuti',
-                    'number' => '142501003769531'
-                ]
-            ],
+            'phone_number' => $ownerContact['phone_number'],
+            'wa_number' => $ownerContact['social_media']['whatsapp']['username'],
+            'email' => $ownerContact['email'],
+            'address' => $ownerContact['address'],
+            'social_media' => $ownerContact['social_media'],
+            'marketplace' => $ownerContact['marketplace'],
             'catalog_category' => $this->catCategory(1),
-            'seller_name' => 'Dapur Firdaus',
+            'seller_name' => $ownerContact['site_name'],
             'current_url' => $this->getMeta('current_url')
         ];
 

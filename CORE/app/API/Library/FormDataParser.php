@@ -29,7 +29,7 @@ class FormDataParser
         foreach ($blocks as $block) {
 
             // If $block is empty then skip to next array item
-            if ($block == "--\r\n") continue;
+            if ($block == "--\r\n" || $block == "\r\n") continue;
 
             // Parses headers and content from a section
             list($key, $content) = explode("\r\n\r\n", $block, 2);
@@ -70,7 +70,7 @@ class FormDataParser
         foreach ($blocks as $block) {
 
             // If $block is empty then skip to next array item
-            if ($block == "--\r\n") continue;
+            if ($block == "--\r\n" || $block == "\r\n") continue;
 
             // Parses headers and content from a section
             list($rawHead, $body) = explode("\r\n\r\n", $block, 2);

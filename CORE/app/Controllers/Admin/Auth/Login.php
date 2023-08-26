@@ -46,10 +46,13 @@ class Login extends AdminController
         return $this->authHandler(
             function ($cbPar = []) {
 
-                return redirect()->to(adminURL(''));
+                return redirect()->to($cbPar['redirect_url']);
             },
             $this->unauthorizedScheme,
-            ['path' => 'auth/login']
+            [
+                'path' => 'auth/login',
+                'redirect_url' => $_GET['continue'] ?? adminURL('')
+            ]
         );
     }
 }

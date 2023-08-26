@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Agu 2023 pada 23.07
+-- Waktu pembuatan: 26 Agu 2023 pada 04.32
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.0.28
 
@@ -61,8 +61,8 @@ CREATE TABLE `myu_app_manifest` (
 
 INSERT INTO `myu_app_manifest` (`manifest_code`, `manifest_value`) VALUES
 ('AUTHENTICATION', '{\"basic\": {\"general\": {\"username\": \"dpfir\", \"password\": \"123123\"}, \"email\": {\"username\": \"dpfir_email\", \"password\": \"123123\"}, \"page_template\": {\"username\": \"dpfir_pagetemplate\", \"password\": \"123123\"}}, \"api_key\": \"aGVsbG93b3JsZF8xMjMxMjM=\", \"google_api_2_oauth\": {\"client_id\": \"\", \"client_secret\": \"\"}, \"google_api_key\": \"\"}'),
-('CONTACT_API_TEXT_TEMPLATE', '{\"whatsapp\":\"Halo Helloworld!\\n\\nSaya telah membuat pesanan  melalui website dengan rincian,\\nNama :\\nNo. Telephone :\\nPackage :\\nPackage Detail :\\nAdds on :\\nTanggal & Jam Acara :\\nLokasi :\\n\\nIngin langsung melakukan pembayaran,\"}'),
-('OWNER_CONTACT', '{\"address\":\"Jl. Melati No. 1, Rw. Laut, Kec. Tanjungkarang Timur, Kota Bandar Lampung, Lampung 35213\",\"instagram\":{\"name\":\"hello.world\",\"url\":\"https:\\/\\/instagram.com\\/hello.world\"},\"line\":{\"name\":\"hello.world\",\"url\":\"\\/hello.world\"},\"whatsapp\":{\"name\":\"081212311321\",\"url\":\"https:\\/\\/wa.me\\/081212311321\"},\"facebook\":{\"name\":\"\\\"\",\"url\":\"https:\\/\\/facebook.com\\/\"},\"youtube\":{\"name\":\"hello.world\",\"url\":\"https:\\/\\/youtu.be\\/hello.world\"},\"linkedin\":{\"name\":\"\",\"url\":\"\"},\"twitter\":{\"name\":\"\",\"url\":\"\"},\"email\":\"\",\"phone_number\":\"081212311321\",\"office_number\":\"\",\"google_maps\":{\"name\":\"\",\"url\":\"\"},\"0\":{\"url\":\"\"}}'),
+('OWNER_CONTACT', '{\"site_name\":\"My UMKM\",\"address\":\"Jl. Raya 1 No. 12 Rt. 012\\/Rw. 04, Kelurahan, Kecamatan, Kota\\/Kabupaten, Provinsi 12345\",\"email\":\"ralfian096@gmail.com\",\"phone_number\":\"628123456789\",\"office_number\":\"\",\"social_media\":{\"instagram\":{\"url\":\"https:\\/\\/instagram.com\\/\",\"icon\":\"ri-instagram-line\",\"img\":\"\",\"username\":\"\",\"placeholder\":\"username\"},\"whatsapp\":{\"url\":\"https:\\/\\/wa.me\\/\",\"icon\":\"ri-whatsapp-line\",\"img\":\"\",\"username\":\"\",\"placeholder\":\"6281234567890\"},\"facebook\":{\"url\":\"https:\\/\\/facebook.com\\/\",\"icon\":\"ri-facebook-circle-line\",\"img\":\"\",\"username\":\"\",\"placeholder\":\"username\"},\"youtube\":{\"url\":\"https:\\/\\/youtu.be\\/\",\"icon\":\"ri-youtube-line\",\"img\":\"\",\"username\":\"\",\"placeholder\":\"username\"},\"linkedin\":{\"url\":\"https:\\/\\/linkedin.com\\/\",\"icon\":\"ri-linkedin-box-fill\",\"img\":\"\",\"username\":\"\",\"placeholder\":\"username\"},\"twitter\":{\"url\":\"https:\\/\\/twitter.com\\/\",\"icon\":\"ri-twitter-x-line\",\"img\":\"\",\"username\":\"\",\"placeholder\":\"username\"},\"tiktok\":{\"url\":\"https:\\/\\/tiktok.com\\/\",\"icon\":\"ri-tiktok-fill\",\"img\":\"\",\"username\":\"\",\"placeholder\":\"username\"},\"quora\":{\"url\":\"https:\\/\\/quora.com\\/\",\"icon\":\"\",\"img\":\"logo\\/third_party\\/logo-quora.svg\",\"username\":\"\",\"placeholder\":\"username\"}},\"marketplace\":{\"tokopedia\":{\"url\":\"https:\\/\\/tokopedia.com\\/\",\"icon\":\"\",\"img\":\"logo\\/third_party\\/logo-tokopedia.svg\",\"username\":\"\",\"placeholder\":\"username\"},\"shopee\":{\"url\":\"https:\\/\\/shopee.com\\/\",\"icon\":\"\",\"img\":\"logo\\/third_party\\/logo-shopee.svg\",\"username\":\"\",\"placeholder\":\"username\"},\"bukalapak\":{\"url\":\"https:\\/\\/bukalapak.com\\/\",\"icon\":\"\",\"img\":\"logo\\/third_party\\/logo-bukalapak.svg\",\"username\":\"\",\"placeholder\":\"username\"},\"blibli\":{\"url\":\"https:\\/\\/blibli.com\\/\",\"icon\":\"\",\"img\":\"logo\\/third_party\\/logo-blibli.svg\",\"username\":\"\",\"placeholder\":\"username\"},\"zalora\":{\"url\":\"https:\\/\\/zalora.com\\/\",\"icon\":\"\",\"img\":\"logo\\/third_party\\/logo-zalora.svg\",\"username\":\"\",\"placeholder\":\"username\"},\"lazada\":{\"url\":\"https:\\/\\/lazada.com\\/\",\"icon\":\"\",\"img\":\"logo\\/third_party\\/logo-lazada.svg\",\"username\":\"\",\"placeholder\":\"username\"}}}'),
+('PAYMENT_METHOD', '{\"BCA\":{\"name\":\"Bank Central Asia\",\"icon\":\"\",\"img\":\"logo/third_party/logo-bca.svg\"},\"BRI\":{\"name\":\"Bank Rakyat Indonesia\",\"icon\":\"\",\"img\":\"logo/third_party/logo-bri.svg\"},\"BNI\":{\"name\":\"Bank Negara Indonesia\",\"icon\":\"\",\"img\":\"logo/third_party/logo-bni.svg\"},\"CIMB\":{\"name\":\"CIMB Niaga\",\"icon\":\"\",\"img\":\"logo/third_party/logo-cimb.svg\"},\"MANDIRI\":{\"name\":\"Bank Mandiri\",\"icon\":\"\",\"img\":\"logo/third_party/logo-mandiri.svg\"},\"PERMATA\":{\"name\":\"Bank Permata\",\"icon\":\"\",\"img\":\"logo/third_party/logo-permata.svg\"},\"BSI\":{\"name\":\"Bank Syariah Indonesia\",\"icon\":\"\",\"img\":\"logo/third_party/logo-bsi.svg\"},\"MEGA\":{\"name\":\"Bank Mega Indonesia\",\"icon\":\"\",\"img\":\"logo/third_party/logo-mega.svg\"},\"DANAMON\":{\"name\":\"Bank Danamon Indonesia\",\"icon\":\"\",\"img\":\"logo/third_party/logo-danamon.svg\"},\"MAYBANK\":{\"name\":\"Bank Maybank Indonesia\",\"icon\":\"\",\"img\":\"logo/third_party/logo-maybank.svg\"},\"SAMPOERNA\":{\"name\":\"Bank Sahabat Sampoerna\",\"icon\":\"\",\"img\":\"logo/third_party/logo-sampoerna.svg\"},\"GOPAY\":{\"name\":\"Gopay\",\"icon\":\"\",\"img\":\"logo/third_party/logo-gopay.svg\"},\"DANA\":{\"name\":\"DANA\",\"icon\":\"\",\"img\":\"logo/third_party/logo-dana.svg\"},\"SHOPEEPAY\":{\"name\":\"Shopeepay\",\"icon\":\"\",\"img\":\"logo/third_party/logo-shopeepay.svg\"},\"OVO\":{\"name\":\"OVO\",\"icon\":\"\",\"img\":\"logo/third_party/logo-ovo.svg\"}}'),
 ('UPLOAD_SETTING', '{\"image\":{\"compress\":\"0.5\",\"max_size\":{\"size\":\"1\",\"unit\":\"mb\"}}}');
 
 -- --------------------------------------------------------
@@ -114,6 +114,19 @@ CREATE TABLE `myu_catalog_category` (
   `description` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `myu_payment_method`
+--
+
+CREATE TABLE `myu_payment_method` (
+  `id` int(10) NOT NULL,
+  `method` varchar(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `number` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -149,6 +162,12 @@ ALTER TABLE `myu_catalog_category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `myu_payment_method`
+--
+ALTER TABLE `myu_payment_method`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -174,6 +193,12 @@ ALTER TABLE `myu_catalog`
 -- AUTO_INCREMENT untuk tabel `myu_catalog_category`
 --
 ALTER TABLE `myu_catalog_category`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `myu_payment_method`
+--
+ALTER TABLE `myu_payment_method`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

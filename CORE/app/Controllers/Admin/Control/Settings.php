@@ -9,9 +9,6 @@ class Settings extends AdminController
 
     private $unauthorizedScheme;
 
-    private
-        $parser;
-
     public function __construct()
     {
 

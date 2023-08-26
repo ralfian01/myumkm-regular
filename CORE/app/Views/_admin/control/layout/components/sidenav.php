@@ -65,6 +65,56 @@
                 <div class="notif"></div>
             </a>
 
+            <div class="menu_item_group">
+                <div class="group_init">
+                    <div class="menu_icon">
+                        <i class="ri-contacts-line"></i>
+                    </div>
+
+                    <div class="menu_name">
+                        Kontak
+                    </div>
+
+                    <div class="notif"></div>
+                </div>
+
+                <div class="group_item_container">
+                    <a href="<?= adminURL('contact/profile'); ?>" class="menu_item">
+                        <div class="menu_name">
+                            Profil
+                        </div>
+
+                        <div class="notif"></div>
+                    </a>
+                    <a href="<?= adminURL('contact/social_media'); ?>" class="menu_item">
+                        <div class="menu_name">
+                            Sosial media
+                        </div>
+
+                        <div class="notif"></div>
+                    </a>
+                    <a href="<?= adminURL('contact/marketplace'); ?>" class="menu_item">
+                        <div class="menu_name">
+                            Marketplace
+                        </div>
+
+                        <div class="notif"></div>
+                    </a>
+                </div>
+            </div>
+
+            <a href="<?= adminURL('payment_method'); ?>" class="menu_item">
+                <div class="menu_icon">
+                    <i class="ri-bank-card-line"></i>
+                </div>
+
+                <div class="menu_name">
+                    Metode Pembayaran
+                </div>
+
+                <div class="notif"></div>
+            </a>
+
             <a href="<?= adminURL('account_management'); ?>" class="menu_item">
                 <div class="menu_icon">
                     <i class="ri-account-circle-line"></i>

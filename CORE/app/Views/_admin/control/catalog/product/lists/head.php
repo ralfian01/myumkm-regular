@@ -1,9 +1,9 @@
 <div class="head_title">
     <div class="title">
-        Kategori Produk
+        Katalog Produk
     </div>
     <div class="tagline">
-        Atur Kategori Produk
+        Atur Katalog Produk
     </div>
 </div>
 <div class="addon">

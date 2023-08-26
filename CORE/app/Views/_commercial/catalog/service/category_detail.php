@@ -145,7 +145,7 @@
                                 });
                         </script>
 
-                        <?php if (isset($payment_method)) : ?>
+                        <?php if (isset($payment_method) && is_array($payment_method)) : ?>
 
                             <hr class="sg_line mt3">
                             <div class="tx_fam_montserrat tx_w_bold mt1" style="color: rgb(100, 100, 100);">
@@ -157,7 +157,7 @@
 
                                     <div class="flex x_start y_center">
                                         <div class="flex_child fits">
-                                            <img src="<?= cdnURL('logo/third_party/' . strtolower($val['method']) . '-logo.svg'); ?>" alt="" style="width: 50px;">
+                                            <img src="<?= cdnURL("{$payment_method_opt[$val['method']]['img']}"); ?>" alt="" style="width: 50px;">
                                         </div>
                                         <div class="flex_child ml1">
                                             <?= "{$val['method']} a/n {$val['name']}"; ?>
