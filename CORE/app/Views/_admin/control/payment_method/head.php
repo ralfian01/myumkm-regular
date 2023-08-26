@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="addon">
-    <a class="button1 bt_small" href="<?= adminURL('info/payment_method/new'); ?>">
+    <a class="button1 bt_small" href="<?= adminURL('payment_method/new'); ?>">
         Tambah
     </a>
 </div>
