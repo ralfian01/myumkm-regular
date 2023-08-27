@@ -10,7 +10,7 @@ This repository holds common files used for regular myumkm.com website projects
 <h2>Installation</h2>
 1. Clone this repository to your computer </br>
 2. Import the MySQL named <b>"submyu_seed.sql.zip"</b> file located in the <b>".install"</b> folder to your computer's local database </br>
-3. Open a terminal and navigate to the "CORE" directory </br>
+3. Open a terminal and navigate to the <b>"CORE"</b> directory </br>
 4. Run the command below to install dependencies
 <blockquote>
     composer update
