@@ -62,37 +62,28 @@ class Service extends CommercialController
     }
 
     // Function to show all product category
-    public function catalogCategoryDetail($id)
+    public function catalogCategoryDetail($id = null)
     {
 
-        return $this->tryCatch(
-            function ($cbPar) {
+        $catCategoryData = $this->dbCatalogCategory(1, $id);
 
-                $catCategoryData = $this->dbCatalogCategory(1, $cbPar['id']);
+        $this->prepMeta([
+            'img_url' => cdnURL('image/' . $catCategoryData['image_path'])
+        ]);
 
-                $this
-                    ->prepMeta([
-                        'img_url' => cdnURL('image/' . $catCategoryData['image_path'])
-                    ])
-                    ->prepAddon([
-                        'catalog_slug' => 'product/' . $cbPar['id'] . '/',
-                        'catalog_category_data' => $catCategoryData,
-                        'payment_method' => $this->paymentMethodList(1),
-                        'payment_method_opt' => (new AppManifest())->paymentMethodOption(),
-                    ]);
+        $data = [];
+        $data['catalog_category_data'] = $catCategoryData;
+        $data['catalog_slug'] = 'product/' . $id . '/';
+        $data['payment_method'] = $this->paymentMethodList(1);
+        $data['payment_method_opt'] = (new AppManifest())->paymentMethodOption();
 
-                return $this->viewPage('catalog/service/category_detail');
-            },
-            ['id' => $id]
-        );
+        return $this->viewPage('catalog/service/category_detail', $data);
     }
 
     ### Function to process data from database
     // Function to get specific catalog category data
-    private function dbCatalogCategory(
-        $condition = 1,
-        $identifier
-    ) {
+    private function dbCatalogCategory($condition = 1, $identifier = null)
+    {
 
         $catCategory = new CatalogCategory();
 
@@ -113,9 +104,8 @@ class Service extends CommercialController
     }
 
     // Function to get product category from db
-    private function paymentMethodList(
-        $code = ''
-    ) {
+    private function paymentMethodList($code = '')
+    {
 
         $dbPyMethodList = new PaymentMethod();
 

@@ -13,13 +13,13 @@ class BlogPage extends CommercialController
     public function __construct()
     {
 
-        // ** Command line below to use default unauthorized scheme in parent class - from this
-        $this->unauthorizedScheme = function ($cbPar = []) {
+        /*** Command line below to use default unauthorized scheme in parent class - from this */
+        // $this->unauthorizedScheme = function ($cbPar = []) {
 
-            if (method_exists($this, '__unauthorizedScheme'))
-                return $this->__unauthorizedScheme($cbPar);
-        };
-        // ** Command line above to use default unauthorized scheme in parent class - to this
+        //     if (method_exists($this, '__unauthorizedScheme'))
+        //     return $this->__unauthorizedScheme($cbPar);
+        // };
+        /*** Command line above to use default unauthorized scheme in parent class - to this */
 
         return Parent::__construct([
             'unauthorizedScheme' => $this->unauthorizedScheme
@@ -53,42 +53,27 @@ class BlogPage extends CommercialController
     public function allBlog()
     {
 
-        return $this->tryCatch(function ($cbPar) {
+        $data = [];
+        $data['blog_list'] = $this->dbBlog(1);
 
-            $dbBlogList = $this->dbBlog(1);
-
-            $this
-                ->prepAddon([
-                    'blog_list' => $dbBlogList
-                ]);
-
-            return $this->viewPage('blog/index');
-        });
+        return $this->viewPage('blog/index', $data);
     }
 
     public function blogDetail($id = null)
     {
 
-        return $this->tryCatch(
-            function ($cbPar) {
+        $dbBlogData = $this->dbBlog(2);
 
-                $dbBlogData = $this->dbBlog(2);
-                $dbBlogList = $this->dbBlog(1);
+        $this->prepMeta([
+            'img_url' => cdnURL('image/' . $dbBlogData['thumbnail_path'])
+        ]);
 
-                $this
-                    ->prepMeta([
-                        'img_url' => cdnURL('image/' . $dbBlogData['thumbnail_path'])
-                    ])
-                    ->prepAddon([
-                        'catalog_slug' => 'product/' . $cbPar['id'] . '/',
-                        'blog_data' => $dbBlogData,
-                        'blog_list' => $dbBlogList
-                    ]);
+        $data = [];
+        $data['catalog_slug'] = 'product/' . $id . '/';
+        $data['blog_data'] = $dbBlogData;
+        $data['blog_list'] = $this->dbBlog(1);
 
-                return $this->viewPage('blog/detail');
-            },
-            ['id' => $id]
-        );
+        return $this->viewPage('blog/detail', $data);
     }
 
 

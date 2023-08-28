@@ -12,13 +12,13 @@ class HomePage extends CommercialController
     public function __construct()
     {
 
-        // ** Command line below to use default unauthorized scheme in parent class - from this
-        $this->unauthorizedScheme = function ($cbPar = []) {
+        /*** Command line below to use default unauthorized scheme in parent class - from this */
+        // $this->unauthorizedScheme = function ($cbPar = []) {
 
-            if (method_exists($this, '__unauthorizedScheme'))
-                return $this->__unauthorizedScheme($cbPar);
-        };
-        // ** Command line above to use default unauthorized scheme in parent class - to this
+        //     if (method_exists($this, '__unauthorizedScheme'))
+        //     return $this->__unauthorizedScheme($cbPar);
+        // };
+        /*** Command line above to use default unauthorized scheme in parent class - to this */
 
         return Parent::__construct([
             'unauthorizedScheme' => $this->unauthorizedScheme

@@ -12,8 +12,8 @@ class ControllerPreProcessor extends BaseController
     protected string $basePath = '';
     protected array $addonObj = [];
 
-    // Function to make meta data
-    protected function meta()
+    // Function to make initial meta data
+    private function initMeta()
     {
 
         return [
@@ -28,24 +28,26 @@ class ControllerPreProcessor extends BaseController
     }
 
     // Function to combine all objects to one zobject
-    protected function combineObject()
+    private function combineObject()
     {
 
         $data = [
             'base_path' => $this->basePath,
-            'meta' => $this->meta()
+            'meta' => $this->initMeta()
         ];
 
         // Insert addon data object to main controller object
-        if (!in_array($this->addonObj, [null, ''])) {
+        if (isset($this->addonObj)) {
 
             foreach ($this->addonObj as $key => $val) {
 
+                // Insert if addonObj key is not "meta"
                 if ($key != 'meta') $data[$key] = $val;
             }
 
-
             if (isset($this->addonObj['meta']) && !in_array($this->addonObj['meta'], [null, ''])) {
+
+                // print_r($this->addonObj['meta']);
 
                 foreach ($this->addonObj['meta'] as $key => $value) {
 
@@ -69,10 +71,10 @@ class ControllerPreProcessor extends BaseController
     public function prepMeta($meta = [])
     {
 
-        foreach ($meta as $key => $val) {
+        if (!isset($this->addonObj['meta']) || empty($this->addonObj['meta']))
+            $this->addonObj['meta'] = [];
 
-            $this->addonObj['meta'][$key] = $val;
-        }
+        $this->addonObj['meta'] = $this->combineArray($this->addonObj['meta'], $meta);
 
         return $this;
     }
@@ -81,9 +83,12 @@ class ControllerPreProcessor extends BaseController
     public function getMeta($metaKey = '')
     {
 
-        $this->prepMeta($this->meta());
+        if (!isset($this->addonObj['meta']) || empty($this->addonObj['meta']))
+            $this->prepMeta($this->initMeta());
 
-        if (isset($this->addonObj['meta'][$metaKey])) return $this->addonObj['meta'][$metaKey];
+        if (isset($this->addonObj['meta'][$metaKey]))
+            return $this->addonObj['meta'][$metaKey];
+
         return null;
     }
 
@@ -104,10 +109,7 @@ class ControllerPreProcessor extends BaseController
             $this->addonObj = $addon;
         } else {
 
-            foreach ($addon as $key => $val) {
-
-                $this->addonObj[$key] = $val;
-            }
+            $this->addonObj = $this->combineArray($this->addonObj, $addon);
         }
 
         return $this;
@@ -236,6 +238,22 @@ class ControllerPreProcessor extends BaseController
         return $param;
     }
 
+    /**
+     * Function to combine 2 arrays
+     * @param array $dest_array Array destination
+     * @param array $enter_array Array origin
+     * @return array
+     */
+    public function combineArray($dest_array, $enter_array)
+    {
+
+        foreach ($enter_array as $key => $val) {
+
+            $dest_array[$key] = $val;
+        }
+
+        return $dest_array;
+    }
 
     // Function to set header rule
     public function CORS()

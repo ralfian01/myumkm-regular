@@ -32,7 +32,7 @@ class Category extends CommercialController
     {
 
         return $this->tryCatch(
-            function ($cbPar) {
+            function ($cbPar = null) {
 
                 // $err = new Error($this->request, $this->response);
                 // return $err->error(500);
@@ -53,45 +53,32 @@ class Category extends CommercialController
     public function allCatalogCategory()
     {
 
-        return $this->tryCatch(function ($cbPar) {
-
-            return $this->viewPage('catalog/product/index');
-        });
+        return $this->viewPage('catalog/product/index');
     }
 
     // Function to show all product category
-    public function catalogCategoryDetail($id)
+    public function catalogCategoryDetail($id = null)
     {
 
-        return $this->tryCatch(
-            function ($cbPar) {
+        $catCategoryData = $this->dbCatalogCategory(1, $id);
 
-                $catCategoryData = $this->dbCatalogCategory(1, $cbPar['id']);
-                $catalogList = $this->dbCatalogList(1, $cbPar['id']);
+        $this->prepMeta([
+            'img_url' => cdnURL('image/' . $catCategoryData['image_path'])
+        ]);
 
-                $this
-                    ->prepMeta([
-                        'img_url' => cdnURL('image/' . $catCategoryData['image_path'])
-                    ])
-                    ->prepAddon([
-                        'catalog_slug' => 'product/' . $cbPar['id'] . '/',
-                        'catalog_category_data' => $catCategoryData,
-                        'catalog_list' => $catalogList
-                    ]);
+        $data = [];
+        $data['catalog_slug'] = 'product/' . $id . '/';
+        $data['catalog_category_data'] = $catCategoryData;
+        $data['catalog_list'] = $this->dbCatalogList(1, $id);
 
-                return $this->viewPage('catalog/product/category_detail');
-            },
-            ['id' => $id]
-        );
+        return $this->viewPage('catalog/product/category_detail', $data);
     }
 
 
     ### Function to process data from database
     // Function to get specific catalog category data
-    private function dbCatalogCategory(
-        $condition = 1,
-        $identifier
-    ) {
+    private function dbCatalogCategory($condition = 1, $identifier = null)
+    {
 
         $catCategory = new CatalogCategory();
 
@@ -112,10 +99,8 @@ class Category extends CommercialController
     }
 
     // Function to get catalog list that related to slug
-    private function dbCatalogList(
-        $condition = 1,
-        $identifier
-    ) {
+    private function dbCatalogList($condition = 1, $identifier = null)
+    {
 
         $catList = new catalogList();
 
