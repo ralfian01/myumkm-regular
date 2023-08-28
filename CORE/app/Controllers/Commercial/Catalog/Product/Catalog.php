@@ -51,38 +51,28 @@ class Catalog extends CommercialController
     }
 
     // Function to show all product category
-    public function catalogDetail($id)
+    public function catalogDetail($id = null)
     {
 
-        return $this->tryCatch(
-            function ($cbPar) {
+        $catalogData = $this->dbCatalogData(1, $id);
 
-                $catalogData = $this->dbCatalogData(1, $cbPar['id']);
-                $catalogList = $this->dbCatalogList(1, $catalogData['category_id']);
+        $this->prepMeta([
+            'img_url' => cdnURL('image/' . $catalogData['image_path'][0]['path'])
+        ]);
 
-                $this
-                    ->prepMeta([
-                        'img_url' => cdnURL('image/' . $catalogData['image_path'][0]['path'])
-                    ])
-                    ->prepAddon([
-                        'catalog_slug' => 'product/catalog/' . $cbPar['id'] . '/',
-                        'catalog_data' => $catalogData,
-                        'catalog_list' => $catalogList,
-                        'payment_method' => $this->paymentMethodList(1),
-                        'payment_method_opt' => (new AppManifest())->paymentMethodOption(),
-                    ]);
+        $data = [];
+        $data['catalog_data'] = $catalogData;
+        $data['catalog_slug'] = 'product/catalog/' . $id . '/';
+        $data['catalog_list'] = $this->dbCatalogList(1, $catalogData['category_id']);
+        $data['payment_method'] = $this->paymentMethodList(1);
+        $data['payment_method_opt'] = (new AppManifest())->paymentMethodOption();
 
-                return $this->viewPage('catalog/product/catalog_detail');
-            },
-            ['id' => $id]
-        );
+        return $this->viewPage('catalog/product/catalog_detail', $data);
     }
 
     // Function to get catalog list that related to slug
-    private function dbCatalogList(
-        $condition = 1,
-        $identifier
-    ) {
+    private function dbCatalogList($condition = 1, $identifier = null)
+    {
 
         $catList = new CatalogData();
 
@@ -110,10 +100,8 @@ class Catalog extends CommercialController
     }
 
     // Function to get specific catalog data
-    private function dbCatalogData(
-        $condition = 1,
-        $identifier
-    ) {
+    private function dbCatalogData($condition = 1, $identifier = null)
+    {
 
         $catCategory = new CatalogData();
 
@@ -134,9 +122,8 @@ class Catalog extends CommercialController
     }
 
     // Function to get product category from db
-    private function paymentMethodList(
-        $code = ''
-    ) {
+    private function paymentMethodList($code = '')
+    {
 
         $dbPyMethodList = new PaymentMethod();
 

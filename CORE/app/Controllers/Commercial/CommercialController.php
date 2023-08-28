@@ -42,30 +42,31 @@ class CommercialController extends ControllerPreProcessor
     }
 
     // Function to prepare controller
-    public function prepare(
-        $meta = [],
-        $addon = []
-    ) {
+    public function prepare($meta = [], $addon = [])
+    {
 
+        if (!isset($meta)) $meta = [];
         if (!isset($addon)) $addon = [];
+
+        // Combine addon with initial addon
+        $addon = $this->combineArray($this->initAddon(), $addon);
 
         $this
             ->prepBasePath($this->base_path)
             ->prepResponse($this->response)
+            ->prepMeta($meta)
             ->prepAddon($addon);
 
         return $this;
     }
 
-    // Show page
-    public function viewPage(
-        $path = '',
-        $addonData = []
-    ) {
+    // Function to set initial addon data
+    private function initAddon()
+    {
 
         $ownerContact = (new AppManifest())->ownerContact();
 
-        $addonData = [
+        return [
             'phone_number' => $ownerContact['phone_number'],
             'wa_number' => $ownerContact['social_media']['whatsapp']['username'],
             'email' => $ownerContact['email'],
@@ -76,9 +77,14 @@ class CommercialController extends ControllerPreProcessor
             'seller_name' => $ownerContact['site_name'],
             'current_url' => $this->getMeta('current_url')
         ];
+    }
+
+    // Show page
+    public function viewPage($path = '', $addonData = [])
+    {
 
         return $this->authHandler(
-            function ($cbPar) {
+            function ($cbPar = null) {
 
                 $this->prepare(null, $cbPar['addonData']);
                 return $this->view($cbPar['path']);

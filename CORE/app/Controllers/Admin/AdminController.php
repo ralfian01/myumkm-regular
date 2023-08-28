@@ -36,7 +36,7 @@ class AdminController extends ControllerPreProcessor
     {
 
         // Get full URL
-        $current_url = urlencode($this->meta()['current_url']);
+        $current_url = urlencode($this->getMeta('current_url'));
 
         if ($cbPar['uri_segment'] != '/login') return redirect()->to(adminURL('login?continue=' . $current_url));
     }
@@ -48,7 +48,11 @@ class AdminController extends ControllerPreProcessor
         $addon = []
     ) {
 
+        if (!isset($meta)) $meta = [];
         if (!isset($addon)) $addon = [];
+
+        // Combine addon with initial addon
+        $addon = $this->combineArray($this->initAddon(), $addon);
 
         $this
             ->prepBasePath($this->base_path)
@@ -56,6 +60,13 @@ class AdminController extends ControllerPreProcessor
             ->prepAddon($addon);
 
         return $this;
+    }
+
+    // Function to set initial meta data
+    private function initAddon()
+    {
+
+        return [];
     }
 
     // Show page
