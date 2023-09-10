@@ -48,6 +48,9 @@ class CommercialController extends ControllerPreProcessor
         if (!isset($meta)) $meta = [];
         if (!isset($addon)) $addon = [];
 
+        // Combine meta with initial meta
+        $meta = $this->combineArray($this->initMeta(), $meta);
+
         // Combine addon with initial addon
         $addon = $this->combineArray($this->initAddon(), $addon);
 
@@ -58,6 +61,19 @@ class CommercialController extends ControllerPreProcessor
             ->prepAddon($addon);
 
         return $this;
+    }
+
+    // Function to set initial addon meta
+    private function initMeta()
+    {
+
+        $ownerContact = (new AppManifest())->ownerContact();
+
+        return [
+            'title' => $ownerContact['site_name'],
+            'site_name' => $ownerContact['site_name'],
+            'description' => $ownerContact['site_name'],
+        ];
     }
 
     // Function to set initial addon data

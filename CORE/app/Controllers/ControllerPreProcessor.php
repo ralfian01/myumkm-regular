@@ -47,8 +47,6 @@ class ControllerPreProcessor extends BaseController
 
             if (isset($this->addonObj['meta']) && !in_array($this->addonObj['meta'], [null, ''])) {
 
-                // print_r($this->addonObj['meta']);
-
                 foreach ($this->addonObj['meta'] as $key => $value) {
 
                     $data['meta'][$key] = $value;
