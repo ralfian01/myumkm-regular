@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\ControllerPreProcessor;
+use App\Models\AppManifest;
 
 class AdminController extends ControllerPreProcessor
 {
@@ -43,13 +44,14 @@ class AdminController extends ControllerPreProcessor
 
 
     // Function to prepare controller
-    public function prepare(
-        $meta = [],
-        $addon = []
-    ) {
+    public function prepare($meta = [], $addon = [])
+    {
 
         if (!isset($meta)) $meta = [];
         if (!isset($addon)) $addon = [];
+
+        // Combine meta with initial meta
+        $meta = $this->combineArray($this->initMeta(), $meta);
 
         // Combine addon with initial addon
         $addon = $this->combineArray($this->initAddon(), $addon);
@@ -57,9 +59,23 @@ class AdminController extends ControllerPreProcessor
         $this
             ->prepBasePath($this->base_path)
             ->prepResponse($this->response)
+            ->prepMeta($meta)
             ->prepAddon($addon);
 
         return $this;
+    }
+
+    // Function to set initial addon meta
+    private function initMeta()
+    {
+
+        $ownerContact = (new AppManifest())->ownerContact();
+
+        return [
+            'title' => $ownerContact['site_name'],
+            'site_name' => $ownerContact['site_name'],
+            'description' => $ownerContact['site_name'],
+        ];
     }
 
     // Function to set initial meta data
@@ -70,10 +86,8 @@ class AdminController extends ControllerPreProcessor
     }
 
     // Show page
-    public function viewPage(
-        $path = '',
-        $addonData = []
-    ) {
+    public function viewPage($path = '', $addonData = [])
+    {
 
         $successFunction = function ($cbPar) {
 
