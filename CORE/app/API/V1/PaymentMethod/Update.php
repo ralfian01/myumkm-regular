@@ -25,7 +25,8 @@ class Update extends APIV1Controller
         'id' => ['required', 'base64'],
         'payment_method' => ['required'],
         'name' => ['required'],
-        'number' => ['required']
+        'number' => ['required'],
+        'bank_name' => []
     ];
     /* end */
 
@@ -111,7 +112,8 @@ class Update extends APIV1Controller
             $updatePayload = removeNullValues([
                 'method' => $this->payload['payment_method'] ?? null,
                 'name' => $this->payload['name'] ?? null,
-                'number' => $this->payload['number'] ?? null
+                'number' => $this->payload['number'] ?? null,
+                'bank_name' => $this->payload['bank_name'] ?? null
             ]);
 
             $update = $dbPyMethod->update(

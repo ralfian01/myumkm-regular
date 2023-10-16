@@ -22,7 +22,8 @@ class Insert extends APIV1Controller
     private $payloadRules = [
         'payment_method' => ['required'],
         'name' => ['required'],
-        'number' => ['required']
+        'number' => ['required'],
+        'bank_name' => []
     ];
     /* end */
 
@@ -97,7 +98,8 @@ class Insert extends APIV1Controller
             $insertPayload = removeNullValues([
                 'method' => $this->payload['payment_method'] ?? null,
                 'name' => $this->payload['name'] ?? null,
-                'number' => $this->payload['number'] ?? null
+                'number' => $this->payload['number'] ?? null,
+                'bank_name' => $this->payload['bank_name'] ?? null
             ]);
 
             $insert = $dbPyMethod->insert($insertPayload);

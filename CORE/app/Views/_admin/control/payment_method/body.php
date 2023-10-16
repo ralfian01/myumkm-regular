@@ -49,7 +49,19 @@
 
                     <tr style="<?= $key % 2 == 0 ? 'background: rgba(var(--Col_theme-main3), 0.25);' : ''; ?>">
                         <td class="p0c5 mb_hide">
-                            <img src="<?= cdnURL("{$payment_method_option[$val['method']]['img']}"); ?>" alt="" style="width: 100%; height: 50px; object-fit: contain;">
+
+                            <?php if ($val['method'] != 'ANOTHER') : ?>
+
+                                <img src="<?= cdnURL("{$payment_method_option[$val['method']]['img']}"); ?>" alt="" style="width: 100%; height: 50px; object-fit: contain;">
+
+                            <?php else : ?>
+
+                                <div class="tx_sm1 tx_al_ct tx_w_bolder">
+                                    <?= $val['bank_name']; ?>
+                                </div>
+
+                            <?php endif; ?>
+
                         </td>
                         <td class="p0c5">
                             <?= $val['number']; ?>
