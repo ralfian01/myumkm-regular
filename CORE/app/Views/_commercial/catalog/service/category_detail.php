@@ -157,10 +157,16 @@
 
                                     <div class="flex x_start y_center">
                                         <div class="flex_child fits">
-                                            <img src="<?= cdnURL("{$payment_method_opt[$val['method']]['img']}"); ?>" alt="" style="width: 50px;">
+
+                                            <?php if ($val['method'] != "ANOTHER") : ?>
+
+                                                <img src="<?= cdnURL("{$payment_method_opt[$val['method']]['img']}"); ?>" alt="" style="width: 50px;">
+
+                                            <?php endif; ?>
+
                                         </div>
                                         <div class="flex_child ml1">
-                                            <?= "{$val['method']} a/n {$val['name']}"; ?>
+                                            <?= $val['method'] == "ANOTHER" ? $val['bank_name'] : $val['method'] . "a/n {$val['name']}"; ?>
                                             <br>
                                             <?= $val['number']; ?>
                                         </div>
