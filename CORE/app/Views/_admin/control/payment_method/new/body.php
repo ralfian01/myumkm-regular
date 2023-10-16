@@ -31,6 +31,18 @@
             </div>
         </div>
 
+        <div class="tx_field1 mt1c5 hide">
+            <div class="input_label">
+                <label for="bank_name">
+                    Nama Bank
+                </label>
+            </div>
+
+            <div class="input_item">
+                <input type="text" name="bank_name" id="bank_name" placeholder="Nama Bank" value="">
+            </div>
+        </div>
+
         <div class="tx_field1 mt1c5">
             <div class="input_label">
                 <label for="name">
@@ -62,6 +74,18 @@
     <script type="text/javascript">
         // 
         $('body')
+            .on('change', '.form_target select[name="payment_method"]', function() {
+
+                if (this.value == "ANOTHER") {
+
+                    $(this).parents('.form_target')
+                        .find('input[name="bank_name"]').parents('.tx_field1').removeClass('hide')
+                } else {
+
+                    $(this).parents('.form_target')
+                        .find('input[name="bank_name"]').parents('.tx_field1').addClass('hide')
+                }
+            })
             .on('click', '.form_target .submit', function() {
 
                 let formTarget = $(this).parents('.form_target')[0],

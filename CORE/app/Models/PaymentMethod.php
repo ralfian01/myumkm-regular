@@ -11,7 +11,7 @@ class PaymentMethod extends Model
     protected $primaryKey       = 'id';
 
     protected $returnType       = 'array';
-    protected $allowedFields    = ['method', 'name', 'number'];
+    protected $allowedFields    = ['method', 'name', 'number', 'bank_name'];
     protected $useAutoIncrement = true;
     protected $skipValidation   = true;
     protected $useTimestamps    = false;
@@ -27,7 +27,8 @@ class PaymentMethod extends Model
                 myu_payment_method.id AS payment_method_id,
                 myu_payment_method.method AS method,
                 myu_payment_method.name AS name,
-                myu_payment_method.number AS number
+                myu_payment_method.number AS number,
+                myu_payment_method.bank_name AS bank_name
             ");
 
         // Filter by method
@@ -94,7 +95,8 @@ class PaymentMethod extends Model
                 myu_payment_method.id AS payment_method_id,
                 myu_payment_method.method AS method,
                 myu_payment_method.name AS name,
-                myu_payment_method.number AS number
+                myu_payment_method.number AS number,
+                myu_payment_method.bank_name AS bank_name
             ");
 
         // Find by id
