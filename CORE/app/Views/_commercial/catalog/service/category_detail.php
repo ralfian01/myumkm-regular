@@ -96,7 +96,7 @@
                                         .collect(
                                             (json) => {
 
-                                                text = "Halo " + json['site_name'] + ", saya ingin memesan layanan dengan detail pesanan sebagai berikut";
+                                                text = "Halo " + encodeURIComponent(json['site_name']) + ", saya ingin memesan layanan dengan detail pesanan sebagai berikut";
 
                                                 json['price_total'] = json['price'] * json['quantity'];
 
@@ -107,18 +107,19 @@
                                                         case 'receiver_name':
 
                                                             text += "%0a%0a*Data pemesan:*";
-                                                            text += "%0aNama pemesan: *" + val + "*";
+                                                            text += "%0aNama pemesan: *" + encodeURIComponent(val) + "*";
                                                             break;
                                                         case 'phone_number':
 
-                                                            text += "%0aNomor telepon: *" + val + "*";
+                                                            text += "%0aNomor telepon: *" + encodeURIComponent(val) + "*";
                                                             break;
                                                     }
                                                 });
 
                                                 text += "%0a%0aTautan produk: " + json['catalog_url'];
 
-                                                window.open('https://wa.me/' + json['wa_number'] + '/?text=' + text, '_blank');
+                                                // window.open('https://wa.me/' + json['wa_number'] + '/?text=' + text, '_blank');
+                                                window.open('https://wa.me/6287886716522/?text=' + text, '_blank');
                                             },
                                             (err) => {
 

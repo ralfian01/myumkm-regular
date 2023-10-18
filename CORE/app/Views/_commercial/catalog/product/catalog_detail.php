@@ -145,7 +145,7 @@
                                         .collect(
                                             (json) => {
 
-                                                text = "Halo " + json['seller_name'] + ", saya ingin memesan produk dengan detail pesanan sebagai berikut";
+                                                text = "Halo " + encodeURIComponent(json['seller_name']) + ", saya ingin memesan produk dengan detail pesanan sebagai berikut";
 
                                                 json['price_total'] = json['price'] * json['quantity'];
 
@@ -155,24 +155,24 @@
                                                     switch (key) {
                                                         case 'catalog_name':
 
-                                                            text += "%0aNama produk: *" + val + "*";
+                                                            text += "%0aNama produk: *" + encodeURIComponent(val) + "*";
                                                             break;
                                                         case 'quantity':
 
-                                                            text += "%0aJumlah: *" + val + "*";
+                                                            text += "%0aJumlah: *" + encodeURIComponent(val) + "*";
                                                             break;
                                                         case 'receiver_name':
 
                                                             text += "%0a%0a*Data pemesan:*";
-                                                            text += "%0aNama pemesan: *" + val + "*";
+                                                            text += "%0aNama pemesan: *" + encodeURIComponent(val) + "*";
                                                             break;
                                                         case 'phone_number':
 
-                                                            text += "%0aNomor telepon: *" + val + "*";
+                                                            text += "%0aNomor telepon: *" + encodeURIComponent(val) + "*";
                                                             break;
                                                         case 'address':
 
-                                                            text += "%0aAlamat pemesan: *" + val + "*";
+                                                            text += "%0aAlamat pemesan: *" + encodeURIComponent(val) + "*";
                                                             break;
                                                     }
                                                 });

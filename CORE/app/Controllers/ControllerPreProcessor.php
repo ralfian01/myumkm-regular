@@ -81,7 +81,10 @@ class ControllerPreProcessor extends BaseController
     public function getMeta($metaKey = '')
     {
 
-        if (!isset($this->addonObj['meta']) || empty($this->addonObj['meta']))
+        if (
+            (!isset($this->addonObj['meta']) || empty($this->addonObj['meta']))
+            || !isset($this->addonObj['meta'][$metaKey])
+        )
             $this->prepMeta($this->initMeta());
 
         if (isset($this->addonObj['meta'][$metaKey]))
@@ -114,7 +117,7 @@ class ControllerPreProcessor extends BaseController
     }
 
     // Function to get addon data
-    public function getAddon($addonKey = '')
+    public function getAddon($addonKey)
     {
 
         if (isset($this->addonObj[$addonKey])) return $this->addonObj[$addonKey];
@@ -122,7 +125,7 @@ class ControllerPreProcessor extends BaseController
     }
 
     // Show page
-    public function view($path = '')
+    public function view($path)
     {
 
         // Set header rule
@@ -172,10 +175,8 @@ class ControllerPreProcessor extends BaseController
      */
 
     // Function to handle authentication
-    public function authHandler(
-        $scFunction,
-        $errFunction
-    ) {
+    public function authHandler($scFunction, $errFunction)
+    {
 
         /*
             !!! Note:
@@ -239,13 +240,13 @@ class ControllerPreProcessor extends BaseController
     /**
      * Function to combine 2 arrays
      * @param array $dest_array Array destination
-     * @param array $enter_array Array origin
+     * @param array $origin_array Array origin
      * @return array
      */
-    public function combineArray($dest_array, $enter_array)
+    public function combineArray($dest_array, $origin_array)
     {
 
-        foreach ($enter_array as $key => $val) {
+        foreach ($origin_array as $key => $val) {
 
             $dest_array[$key] = $val;
         }
