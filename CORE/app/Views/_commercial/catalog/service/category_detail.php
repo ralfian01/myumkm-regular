@@ -118,8 +118,7 @@
 
                                                 text += "%0a%0aTautan produk: " + json['catalog_url'];
 
-                                                // window.open('https://wa.me/' + json['wa_number'] + '/?text=' + text, '_blank');
-                                                window.open('https://wa.me/6287886716522/?text=' + text, '_blank');
+                                                window.open('https://wa.me/' + json['wa_number'] + '/?text=' + text, '_blank');
                                             },
                                             (err) => {
 
