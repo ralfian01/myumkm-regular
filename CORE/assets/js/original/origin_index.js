@@ -1,5 +1,4 @@
-var baseUrl = 'http://localhost:6059/';
-// var baseUrl = 'https://subdomain.myumkm.com/';
+if (baseUrl === undefined) var baseUrl = 'http://localhost:6059/';
 
 // Constanta
 $.const = {};

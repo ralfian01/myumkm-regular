@@ -37,9 +37,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
 
     <script src="<?= cdnUrl('js/original/origin_classes.js'); ?>" type="text/javascript"></script>
-
-    <script type="module">
-        //   import{initializeApp as e}from"https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";import{getAnalytics as a}from"https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";let firebaseConfig={apiKey:"AIzaSyBBaPazGCR_G2CmdhU1TBxFPuIhbxilNEU",authDomain:"jicco-id.firebaseapp.com",projectId:"jicco-id",storageBucket:"jicco-id.appspot.com",messagingSenderId:"733895171008",appId:"1:733895171008:web:46e4c13077f3e003e30625",measurementId:"G-1PFWBXNDGM"},app=e(firebaseConfig),analytics=a(app);
+    <script type="text/javascript">
+        var baseUrl = "<?= base_url(); ?>";
     </script>
 </head>
 
